@@ -118,7 +118,7 @@ h2.big { font-size:clamp(40px, 5.4vw, 80px); max-width:13em; }
 .process :focus-visible { outline-color:var(--white); }
 .sentence { font-size:clamp(40px, 6.2vw, 96px); max-width:14em; }
 .sentence button { font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer; text-decoration:underline; text-decoration-thickness:.06em; text-underline-offset:.12em; text-decoration-color:rgba(250,249,246,.35); transition:color .25s, text-decoration-color .25s; }
-.sentence button[aria-selected="true"], .sentence button:hover { text-decoration-color:var(--white); color:var(--sky); }
+.sentence button[aria-pressed="true"], .sentence button:hover { text-decoration-color:var(--white); color:var(--sky); }
 .explain { margin-top:clamp(32px, 4vw, 56px); max-width:34em; min-height:5.5em; font-size:22px; color:#E3ECF6; }
 .explain p { margin:0; }
 .nw { white-space:nowrap; }
@@ -246,7 +246,7 @@ footer ul { display:flex; gap:24px; list-style:none; margin:0; padding:0; flex-w
 
 <section class="process" id="ablauf" aria-labelledby="ablauf-satz">
 <div class="wrap">
-<h2 class="s sentence" id="ablauf-satz">Wir <span class="nw"><button type="button" aria-selected="true" data-x="0">hören zu</button>,</span> <span class="nw"><button type="button" aria-selected="false" data-x="1">skizzieren</button>,</span> <button type="button" aria-selected="false" data-x="2">bauen</button> und <button type="button" aria-selected="false" data-x="3">bleiben</button>.</h2>
+<h2 class="s sentence" id="ablauf-satz">Wir <span class="nw"><button type="button" aria-pressed="true" data-x="0">hören zu</button>,</span> <span class="nw"><button type="button" aria-pressed="false" data-x="1">skizzieren</button>,</span> <button type="button" aria-pressed="false" data-x="2">bauen</button> und <button type="button" aria-pressed="false" data-x="3">bleiben</button>.</h2>
 <div class="explain" aria-live="polite"><p id="explain">Erst mal reden: Wer kommt auf deine Seite, und wonach suchen die Leute dort? Kaffee optional.</p></div>
 </div>
 </section>
@@ -457,7 +457,7 @@ const EXPLAIN = [
 ];
 const verbs = [...document.querySelectorAll(".sentence button")], explain = document.getElementById("explain");
 verbs.forEach(b => {
-  const pick = () => { verbs.forEach(v => v.setAttribute("aria-selected", v === b)); explain.textContent = EXPLAIN[+b.dataset.x]; };
+  const pick = () => { verbs.forEach(v => v.setAttribute("aria-pressed", v === b)); explain.textContent = EXPLAIN[+b.dataset.x]; };
   b.addEventListener("click", pick);
   b.addEventListener("mouseenter", pick);
   b.addEventListener("focus", pick);
