@@ -1,14 +1,14 @@
 {
-  "land": "AT",
+  "land": "DE",
   "art": "unternehmen",
   "ausgabe": "public",
   "betreiber": {
-    "name": "",
+    "name": "Philipp Nirnberger",
     "rechtsform": "",
     "vertreten_durch": "",
     "unternehmensgegenstand": "",
-    "anschrift": "",
-    "email": "",
+    "anschrift": ["Wühren 35", "24794 Bünsdorf", "Deutschland"],
+    "email": "info@seitenschwung.com",
     "telefon": "",
     "uid": "",
     "firmenbuch": "",
@@ -16,11 +16,11 @@
     "berufsrecht": "",
     "gewerbebehoerde": ""
   },
-  "aufsichtsbehoerde": "",
+  "aufsichtsbehoerde": "Unabhängiges Landeszentrum für Datenschutz Schleswig-Holstein (ULD), Holstenstraße 98, 24103 Kiel",
   "blattlinie": "",
   "redaktion_verantwortlich": "",
   "bausteine": ["kontakt-mail"],
   "eigene_abschnitte": [],
   "bildnachweise": [],
-  "stand": ""
+  "stand": "Oktober 2026"
 }
