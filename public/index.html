@@ -196,7 +196,9 @@ h2.big { font-size:clamp(40px, 5.4vw, 80px); max-width:13em; }
 .case .sector { font-size:16px; font-weight:600; color:var(--blue-text); margin:10px 0 0; }
 .case p.d { color:var(--soft); margin:12px 0 0; max-width:34em; }
 .soon-lead { font-size:20px; color:var(--soft); margin:20px 0 0; }
-.frame .bar .status { margin-left:auto; font-weight:600; color:var(--rot-text); }
+/* Status in ink for contrast on the grey bar; the orange dot carries the colour. */
+.frame .bar .status { margin-left:auto; font-weight:600; color:var(--ink); display:inline-flex; align-items:center; gap:7px; }
+.frame .bar .status::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--rot); }
 .case .visit { display:inline-flex; gap:6px; align-items:center; margin-top:16px; font-weight:600; color:var(--blue-text); }
 
 section, .stage { scroll-margin-top:72px; }
