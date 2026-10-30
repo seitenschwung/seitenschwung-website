@@ -160,10 +160,13 @@ header { position:fixed; left:0; right:0; }
 .fanbox { position:absolute; left:-20vw; bottom:-17vw; width:min(72vw, 1080px); aspect-ratio:660/520; pointer-events:none; }
 .works { position:absolute; left:var(--pad); right:var(--pad); top:calc(88px + 3vh); z-index:2; }
 .works h2 { font-size:clamp(36px, 4.6vw, 68px); max-width:16em; }
-.slots { display:grid; grid-template-columns:repeat(3, 1fr); gap:clamp(20px, 3vw, 48px); margin-top:clamp(28px, 5vh, 64px); max-width:calc((100vh - 380px) * 4.8 + 96px); }
+.slots { display:grid; grid-template-columns:repeat(3, 1fr); gap:clamp(20px, 3vw, 48px); margin-top:clamp(28px, 5vh, 64px); max-width:calc((100vh - 380px) * 4.3 + 96px); }
 .slot { display:block; text-decoration:none; }
-.slot .ph { position:relative; }
-.card { border-radius:8px; overflow:hidden; background:var(--card); border:1px solid var(--line); opacity:.001; transform:scale(.92); will-change:transform, opacity; }
+/* Each card carries its phone view at the lower right, as on the close-ups; card and phone fade in together. */
+.slot .ph { position:relative; padding:0 7% 10% 0; opacity:.001; transform:scale(.92); will-change:transform, opacity; }
+.slot .phone { position:absolute; right:0; bottom:0; width:22%; height:auto; aspect-ratio:600/1298; object-fit:cover; object-position:top; border:4px solid var(--phone); border-radius:16px; background:var(--card); transition:transform .5s var(--ease); }
+.slot:hover .phone { transform:translateY(-6px) rotate(2deg); }
+.card { border-radius:8px; overflow:hidden; background:var(--card); border:1px solid var(--line); }
 .card .bar { padding:7px 12px; font-size:12px; color:var(--soft); background:var(--paper-deep); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .card img { display:block; width:100%; height:auto; aspect-ratio:1600/1000; object-fit:cover; object-position:top; }
 .slot h3 { font-size:clamp(20px, 2.2vw, 30px); margin-top:12px; }
@@ -218,7 +221,8 @@ section, .stage { scroll-margin-top:72px; }
   .scroll-hint { display:none; }
   .slots { max-width:none; grid-template-columns:1fr; gap:14px; }
   .slot { display:grid; grid-template-columns:min(40%, calc(((100vh - 300px) / 3 - 42px) * 1.6)) 1fr; column-gap:14px; }
-  .slot .ph { grid-row:span 2; }
+  .slot .ph { grid-row:span 2; padding:0; }
+  .slot .phone { display:none; }
   .slot h3 { font-size:20px; margin-top:0; align-self:end; }
   .slot .meta { align-self:start; }
   .slot .meta { font-size:14px; }
@@ -232,7 +236,7 @@ section, .stage { scroll-margin-top:72px; }
 .debug button, .debug select { font:600 13px 'Rethink Sans',sans-serif; padding:6px 10px; border:1px solid var(--line); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior:auto; }
-  .frame, .case .phone, .case .shot:hover .frame, .case .shot:hover .phone { transition:none; transform:none; }
+  .frame, .case .phone, .case .shot:hover .frame, .case .shot:hover .phone, .slot .phone, .slot:hover .phone { transition:none; transform:none; }
 }
 </style>
 </head>
@@ -269,9 +273,9 @@ section, .stage { scroll-margin-top:72px; }
 <div class="works">
 <h2 class="s reveal">Three sites already out in the world.</h2>
 <div class="slots">
-<a class="slot" href="https://zww-kiel.de" target="_blank" rel="noopener"><div class="ph"><div class="card"><div class="bar">zww-kiel.de</div><img src="../assets/zww.webp" alt="Home page of ZWW Uni Kiel" width="1600" height="1000"></div></div><h3 class="s reveal">ZWW Uni Kiel</h3><p class="meta reveal">University, continuing education</p></a>
-<a class="slot" href="https://habibihermanos.de" target="_blank" rel="noopener"><div class="ph"><div class="card"><div class="bar">habibihermanos.de</div><img src="../assets/habibi.webp" alt="Home page of Habibi Hermanos" width="1600" height="1000"></div></div><h3 class="s reveal">Habibi Hermanos</h3><p class="meta reveal">Music, Kiel</p></a>
-<a class="slot" href="https://simonernstnirnberger.at" target="_blank" rel="noopener"><div class="ph"><div class="card"><div class="bar">simonernstnirnberger.at</div><img src="../assets/simon.webp" alt="Home page of Simon Ernst Nirnberger" width="1600" height="1000"></div></div><h3 class="s reveal">Simon Ernst Nirnberger</h3><p class="meta reveal">Fine art</p></a>
+<a class="slot" href="https://zww-kiel.de" target="_blank" rel="noopener"><div class="ph"><div class="card"><div class="bar">zww-kiel.de</div><img src="../assets/zww.webp" alt="Home page of ZWW Uni Kiel" width="1600" height="1000"></div><img class="phone" src="../assets/zww-mobil.webp" alt="" width="600" height="1298"></div><h3 class="s reveal">ZWW Uni Kiel</h3><p class="meta reveal">University, continuing education</p></a>
+<a class="slot" href="https://habibihermanos.de" target="_blank" rel="noopener"><div class="ph"><div class="card"><div class="bar">habibihermanos.de</div><img src="../assets/habibi.webp" alt="Home page of Habibi Hermanos" width="1600" height="1000"></div><img class="phone" src="../assets/habibi-mobil.webp" alt="" width="600" height="1298"></div><h3 class="s reveal">Habibi Hermanos</h3><p class="meta reveal">Music, Kiel</p></a>
+<a class="slot" href="https://simonernstnirnberger.at" target="_blank" rel="noopener"><div class="ph"><div class="card"><div class="bar">simonernstnirnberger.at</div><img src="../assets/simon.webp" alt="Home page of Simon Ernst Nirnberger" width="1600" height="1000"></div><img class="phone" src="../assets/simon-mobil.webp" alt="" width="600" height="1298"></div><h3 class="s reveal">Simon Ernst Nirnberger</h3><p class="meta reveal">Fine art</p></a>
 </div>
 </div>
 <div class="leaf" aria-hidden="true"><svg viewBox="585 140 470 490"><use href="#pg" style="fill:var(--paper);stroke:var(--paper)" stroke-width="30" stroke-linejoin="round"/><use href="#pg" style="fill:#BCD6EE"/><use href="#pg" style="fill:none;stroke:#BCD6EE" stroke-width="8" stroke-linejoin="round"/></svg></div>
@@ -332,7 +336,7 @@ const PAGE = new Path2D(document.getElementById("pg").getAttribute("d"));
 const css = getComputedStyle(document.documentElement), ROT = css.getPropertyValue("--rot").trim();
 let PAPER = css.getPropertyValue("--paper").trim();
 let dpr = 1;
-const cards = [...document.querySelectorAll(".slot .card")], slots = [...document.querySelectorAll(".slot")];
+const cards = [...document.querySelectorAll(".slot .ph")], slots = [...document.querySelectorAll(".slot")];
 const reveals = [...document.querySelectorAll(".works .reveal")];
 const ht = document.getElementById("ht"), hint = document.getElementById("hint");
 const startRot = [44, 22, 0];
