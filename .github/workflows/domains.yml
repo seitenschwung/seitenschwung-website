@@ -1,0 +1,53 @@
+# Sets the domains of the Coolify app by hand, e.g. to add www.seitenschwung.com.
+# Run it from the Actions tab (or `gh workflow run domains.yml`), then run "CI & Deploy" once
+# so Coolify rebuilds the routing and fetches the certificate for the new host.
+name: Coolify domains
+
+on:
+  workflow_dispatch:
+    inputs:
+      domains:
+        description: "Comma-separated, each with :8080"
+        default: "https://seitenschwung.com:8080,https://www.seitenschwung.com:8080"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  domains:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: production
+    env:
+      COOLIFY_URL: ${{ vars.COOLIFY_URL || secrets.COOLIFY_URL }}
+      COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+      DOMAINS: ${{ inputs.domains }}
+    steps:
+      - name: Join tailnet
+        uses: tailscale/github-action@d1b6cd204f8dceda5b3eaad7f1f767be390056cd # v4.2.0
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+
+      - name: Set the domains
+        run: |
+          set -uo pipefail
+          NAME="${GITHUB_REPOSITORY#*/}"; NAME="${NAME,,}"
+          BASE="${COOLIFY_URL%/}/api/v1"
+          WORK="$(mktemp -d)"; trap 'rm -rf "$WORK"' EXIT
+          ( umask 077; printf 'Authorization: Bearer %s\n' "$COOLIFY_TOKEN" > "$WORK/auth" )
+          coolify() {
+            local args=(-sS -o "$WORK/body" -w '%{http_code}' --max-time 30 -X "$1" -H "@$WORK/auth" -H 'Accept: application/json')
+            [ $# -ge 3 ] && args+=(-H 'Content-Type: application/json' --data "$3")
+            curl "${args[@]}" "${BASE}$2" || echo 000
+          }
+          for i in 1 2 3 4 5; do curl -sS --fail --max-time 15 "${COOLIFY_URL%/}/api/health" > /dev/null && break; sleep 5; done
+          code=$(coolify GET /applications); [ "${code:0:1}" = 2 ] || { echo "::error::Could not list apps (HTTP $code)"; exit 1; }
+          uuid="$(jq -r --arg n "$NAME" '[.[] | select(.name == $n)][0].uuid // empty' "$WORK/body")"
+          [ -n "$uuid" ] || { echo "::error::No Coolify app named $NAME"; exit 1; }
+          echo "Before: $(jq -c --arg u "$uuid" '[.[] | select(.uuid == $u)][0] | {fqdn, docker_compose_domains}' "$WORK/body")"
+          code=$(coolify PATCH "/applications/$uuid" "$(jq -cn --arg d "$DOMAINS" '{docker_compose_domains: [{name: "web", domain: $d}]}')")
+          [ "${code:0:1}" = 2 ] || { echo "::error::Could not set the domains (HTTP $code): $(head -c 400 "$WORK/body")"; exit 1; }
+          echo "✅ Domains of $NAME: $DOMAINS. Now run CI & Deploy once." >> "$GITHUB_STEP_SUMMARY"
