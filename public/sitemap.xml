@@ -2,4 +2,5 @@
 <!-- Every indexable page (not Impressum and Datenschutz, they are noindex). CI checks it against the site. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://seitenschwung.com/</loc></url>
+  <url><loc>https://seitenschwung.com/technik.html</loc></url>
 </urlset>
