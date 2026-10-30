@@ -145,15 +145,13 @@ footer ul { display:flex; gap:24px; list-style:none; margin:0; padding:0; flex-w
   html { scroll-behavior:auto; }
 }
 .track.deal .leafmark { opacity:0; }
-/* Frameworks: one hairline row each, the name set large like a title */
+/* Frameworks: two columns of hairline rows, each name set large like a title */
 .kits { border-top:1px solid var(--line); }
-.kitlist { list-style:none; margin:clamp(40px, 5vw, 72px) 0 0; padding:0; }
-.kitlist li { display:grid; grid-template-columns:minmax(0, 5fr) minmax(0, 7fr); gap:clamp(16px, 4vw, 64px); align-items:baseline; padding:clamp(20px, 2.4vw, 32px) 0; border-top:1px solid var(--line); }
-.kitlist .s { display:block; font-size:clamp(30px, 3.4vw, 48px); }
-.kitlist li:nth-child(2) .s { color:var(--blue); }
-.kitlist li:nth-child(4) .s { color:var(--rot-text); }
-.kitlist p { margin:0; color:var(--soft); max-width:34em; }
-@media (max-width: 900px) { .kitlist li { grid-template-columns:1fr; gap:8px; } }
+.kitlist { list-style:none; margin:clamp(40px, 5vw, 72px) 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; column-gap:clamp(32px, 5vw, 96px); }
+.kitlist li { padding:clamp(20px, 2.4vw, 30px) 0; border-top:1px solid var(--line); }
+.kitlist .s { display:block; font-size:clamp(28px, 3vw, 42px); }
+.kitlist p { margin:8px 0 0; color:var(--soft); max-width:34em; }
+@media (max-width: 900px) { .kitlist { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -257,12 +255,18 @@ footer ul { display:flex; gap:24px; list-style:none; margin:0; padding:0; flex-w
 <section class="kits" aria-labelledby="kits-h">
 <div class="wrap">
 <h2 class="s big" id="kits-h">Für andere Projekte: das passende Werkzeug.</h2>
-<p class="lead">Diese Seite braucht kein Framework. Andere Projekte schon. Wir wählen das Werkzeug nach der Aufgabe, nicht umgekehrt.</p>
+<p class="lead">Diese Seite braucht kein Framework. Andere Projekte schon. Das liegt bei uns im Werkzeugkasten, und wir wählen nach der Aufgabe, nicht umgekehrt.</p>
 <ul class="kitlist">
 <li><span class="s">HTML, CSS, JavaScript</span><p>Für Visitenkarten, Portfolios und Seiten, die vor allem schnell laden sollen. So ist auch diese Seite gebaut.</p></li>
 <li><span class="s">Astro</span><p>Für Seiten mit vielen Unterseiten und Texten, die trotzdem schlank und schnell bleiben sollen.</p></li>
 <li><span class="s">Vue</span><p>Für Seiten mit interaktiven Teilen wie Filtern, Konfiguratoren oder Buchungsstrecken.</p></li>
+<li><span class="s">Nuxt</span><p>Für Vue-Projekte, die auf dem Server vorbereitet werden und gut auffindbar sein sollen.</p></li>
+<li><span class="s">React</span><p>Für Oberflächen mit viel Bewegung im Inhalt, etwa Dashboards oder Kundenportale.</p></li>
+<li><span class="s">Next.js</span><p>Für React-Projekte, die schnell laden und von Suchmaschinen gefunden werden sollen.</p></li>
 <li><span class="s">Angular</span><p>Für größere Anwendungen mit Anmeldung, vielen Formularen und Ansichten, etwa für Hochschulen und Unternehmen.</p></li>
+<li><span class="s">SvelteKit</span><p>Für kleine, sehr schnelle Anwendungen mit wenig Ballast.</p></li>
+<li><span class="s">TypeScript</span><p>Für größere Codebasen: Viele Fehler fallen schon beim Schreiben auf, nicht erst bei deinen Besuchern.</p></li>
+<li><span class="s">Tailwind CSS</span><p>Für Gestaltungssysteme, die über viele Seiten hinweg einheitlich bleiben sollen.</p></li>
 </ul>
 </div>
 </section>
