@@ -144,6 +144,7 @@ footer ul { display:flex; gap:24px; list-style:none; margin:0; padding:0; flex-w
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior:auto; }
 }
+.track.deal .leafmark { opacity:0; }
 </style>
 </head>
 <body>
@@ -269,6 +270,36 @@ menu.addEventListener("click", () => {
 document.querySelectorAll(".nav-list a").forEach(a => a.addEventListener("click", () => {
   header.classList.remove("open"); menu.setAttribute("aria-expanded", "false");
 }));
+</script>
+<script>
+// The track deals its pages from left to right on first sight: each page flies in from where the one before it lies,
+// and the dotted line draws itself along behind them. Without JS or with reduced motion everything simply stands there.
+(() => {
+  const track = document.querySelector(".track"), line = document.querySelector(".swing");
+  if (!track || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const leaves = [...track.querySelectorAll(".leafmark")];
+  track.classList.add("deal");
+  // Starts once the top of the track is well inside the window (a plain scroll check: works in embedded previews too).
+  const start = () => {
+    if (track.getBoundingClientRect().top > innerHeight * .85) return;
+    removeEventListener("scroll", start);
+    const boxes = leaves.map(l => l.getBoundingClientRect()), ease = "cubic-bezier(.16, 1, .3, 1)", step = 380;
+    if (line && getComputedStyle(line).display !== "none")
+      line.animate([{ clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0 0 0)" }], { duration: 300 + step * leaves.length, easing: "linear", fill: "both" });
+    leaves.forEach((l, i) => {
+      const from = i ? boxes[i - 1] : { left: boxes[0].left - 140, top: boxes[0].top - 30 };
+      const rest = getComputedStyle(l).transform, end = rest === "none" ? "rotate(0deg)" : rest;
+      l.animate([
+        { transform: `translate(${from.left - boxes[i].left}px, ${from.top - boxes[i].top}px) rotate(-50deg)`, opacity: 0 },
+        { opacity: 1, offset: .2 },
+        { transform: end, opacity: 1 },
+      ], { duration: 900, delay: 200 + i * step, easing: ease, fill: "both" });
+    });
+    track.classList.remove("deal");
+  };
+  addEventListener("scroll", start, { passive: true });
+  start();
+})();
 </script>
 </body>
 </html>
