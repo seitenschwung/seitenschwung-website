@@ -2,5 +2,10 @@
 <!-- Every indexable page (not Impressum and Datenschutz, they are noindex). CI checks it against the site. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://seitenschwung.com/</loc></url>
+  <url><loc>https://seitenschwung.com/ablauf.html</loc></url>
+  <url><loc>https://seitenschwung.com/studio.html</loc></url>
   <url><loc>https://seitenschwung.com/technik.html</loc></url>
+  <url><loc>https://seitenschwung.com/en/</loc></url>
+  <url><loc>https://seitenschwung.com/en/ablauf.html</loc></url>
+  <url><loc>https://seitenschwung.com/en/studio.html</loc></url>
 </urlset>
