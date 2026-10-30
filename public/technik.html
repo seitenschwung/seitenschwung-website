@@ -162,10 +162,15 @@ h2.big { font-size:clamp(40px, 5.4vw, 80px); max-width:13em; }
 .stop h3 { font-size:clamp(26px, 2.4vw, 36px); }
 .stop p { margin:10px 0 0; }
 .stop .when { font-size:15px; font-weight:600; color:var(--blue-text); margin:0 0 6px; }
+/* The real version string from /version.txt, linked to its commit: proof that the track is not a drawing. */
+.stop .live { font-size:15px; font-weight:600; margin-top:10px; }
+.stop .live a { color:var(--blue-text); font-variant-numeric:tabular-nums; }
 .stop .tools { font-size:15px; color:var(--soft); margin-top:14px; padding-top:12px; border-top:1px solid var(--line); }
 
 /* Rollback */
-.back { display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px, 6vw, 120px); align-items:center; }
+/* Heading on top, the three pages below across the full width, so each step has room to read. */
+.back { display:grid; gap:clamp(40px, 5vw, 72px); }
+.back .flow { max-width:1100px; }
 /* Three pages in a row: A runs, B fails, A again. B sits lower and askew, like a page that fell out. */
 .flow { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3, 1fr); gap:clamp(16px, 2.4vw, 36px); }
 .flow li { position:relative; }
@@ -223,8 +228,8 @@ h2.big { font-size:clamp(40px, 5.4vw, 80px); max-width:13em; }
 /* Frameworks: two columns of hairline rows, each name set large like a title */
 .kits { border-top:1px solid var(--line); }
 .kitlist { list-style:none; margin:clamp(40px, 5vw, 72px) 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; column-gap:clamp(32px, 5vw, 96px); }
-.kitlist li { padding:clamp(20px, 2.4vw, 30px) 0; border-top:1px solid var(--line); }
-.kitlist .s { display:block; font-size:clamp(28px, 3vw, 42px); }
+.kitlist li { padding:clamp(16px, 1.8vw, 24px) 0; border-top:1px solid var(--line); }
+.kitlist .s { display:block; font-size:clamp(26px, 2.6vw, 36px); }
 .kitlist p { margin:8px 0 0; color:var(--soft); max-width:34em; }
 @media (max-width: 900px) { .kitlist { grid-template-columns:1fr; } }
 </style>
@@ -293,6 +298,7 @@ h2.big { font-size:clamp(40px, 5.4vw, 80px); max-width:13em; }
 <h3 class="s">Online</h3>
 <p>Die Seite läuft in einem Rechenzentrum in Nürnberg und kommt verschlüsselt bei dir an.</p>
 <p class="tools">Hetzner, Let’s Encrypt, HTTP/3</p>
+<p class="live" id="live" hidden>Gerade online: Version <a id="ver" href="https://github.com/seitenschwung/seitenschwung-website/commits/main"></a></p>
 </li>
 </ol>
 </div>
@@ -447,6 +453,17 @@ h2.big { font-size:clamp(40px, 5.4vw, 80px); max-width:13em; }
   addEventListener("scroll", start, { passive: true });
   start();
 })();
+</script>
+<script>
+// Show which commit is online right now, straight from the running server.
+fetch("version.txt", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(v => {
+  v = v.trim();
+  if (!/^[0-9a-f]{40}$/.test(v)) return;
+  const a = document.getElementById("ver");
+  a.textContent = v.slice(0, 7);
+  a.href = "https://github.com/seitenschwung/seitenschwung-website/commit/" + v;
+  document.getElementById("live").hidden = false;
+}).catch(() => {});
 </script>
 </body>
 </html>
