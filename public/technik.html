@@ -38,6 +38,7 @@ svg.logo { display:block; }
 .skip { position:absolute; left:-999px; top:8px; background:var(--white); padding:10px 14px; z-index:50; }
 .skip:focus { left:8px; }
 code { font-family:inherit; font-weight:600; }
+.vh { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
 
 /* Header, as on the home page */
 header { position:sticky; top:0; z-index:20; background:var(--paper); }
@@ -183,6 +184,7 @@ footer ul { display:flex; gap:24px; list-style:none; margin:0; padding:0; flex-w
 <p class="lead">Hier steht offen, womit seitenschwung.com gebaut ist, was jede Änderung bestehen muss und wo die Seite wohnt. Die Fachbegriffe stehen jeweils klein darunter, falls du sie nachschlagen willst.</p>
 
 <div class="track-wrap">
+<h2 class="vh">Der Weg einer Änderung</h2>
 <svg class="swing" viewBox="0 0 1000 136" preserveAspectRatio="none" aria-hidden="true"><path d="M20 40 C 110 40, 140 96, 220 96 S 330 40, 420 40 S 530 96, 620 96 S 730 40, 820 40 S 930 96, 1000 96"/></svg>
 <ol class="track" aria-label="Der Weg einer Änderung">
 <li class="stop">
