@@ -145,6 +145,15 @@ footer ul { display:flex; gap:24px; list-style:none; margin:0; padding:0; flex-w
   html { scroll-behavior:auto; }
 }
 .track.deal .leafmark { opacity:0; }
+/* Frameworks: one hairline row each, the name set large like a title */
+.kits { border-top:1px solid var(--line); }
+.kitlist { list-style:none; margin:clamp(40px, 5vw, 72px) 0 0; padding:0; }
+.kitlist li { display:grid; grid-template-columns:minmax(0, 5fr) minmax(0, 7fr); gap:clamp(16px, 4vw, 64px); align-items:baseline; padding:clamp(20px, 2.4vw, 32px) 0; border-top:1px solid var(--line); }
+.kitlist .s { display:block; font-size:clamp(30px, 3.4vw, 48px); }
+.kitlist li:nth-child(2) .s { color:var(--blue); }
+.kitlist li:nth-child(4) .s { color:var(--rot-text); }
+.kitlist p { margin:0; color:var(--soft); max-width:34em; }
+@media (max-width: 900px) { .kitlist li { grid-template-columns:1fr; gap:8px; } }
 </style>
 </head>
 <body>
@@ -242,6 +251,19 @@ footer ul { display:flex; gap:24px; list-style:none; margin:0; padding:0; flex-w
 <div><dt>Server</dt><dd><b>Hetzner, Rechenzentrum Nürnberg.</b> Die Seite liegt in Deutschland.</dd></div>
 <div><dt>Schutz</dt><dd><b>CrowdSec</b> erkennt auffällige Zugriffe und sperrt sie. Server-Logfiles werden nach 14 Tagen gelöscht.</dd></div>
 </dl>
+</div>
+</section>
+
+<section class="kits" aria-labelledby="kits-h">
+<div class="wrap">
+<h2 class="s big" id="kits-h">Für andere Projekte: das passende Werkzeug.</h2>
+<p class="lead">Diese Seite braucht kein Framework. Andere Projekte schon. Wir wählen das Werkzeug nach der Aufgabe, nicht umgekehrt.</p>
+<ul class="kitlist">
+<li><span class="s">HTML, CSS, JavaScript</span><p>Für Visitenkarten, Portfolios und Seiten, die vor allem schnell laden sollen. So ist auch diese Seite gebaut.</p></li>
+<li><span class="s">Astro</span><p>Für Seiten mit vielen Unterseiten und Texten, die trotzdem schlank und schnell bleiben sollen.</p></li>
+<li><span class="s">Vue</span><p>Für Seiten mit interaktiven Teilen wie Filtern, Konfiguratoren oder Buchungsstrecken.</p></li>
+<li><span class="s">Angular</span><p>Für größere Anwendungen mit Anmeldung, vielen Formularen und Ansichten, etwa für Hochschulen und Unternehmen.</p></li>
+</ul>
 </div>
 </section>
 
