@@ -195,6 +195,18 @@ section[id] { scroll-margin-top:76px; }
 .case.soon .shot { max-width:520px; }
 .status { display:inline-flex; gap:8px; align-items:center; align-self:flex-start; margin-top:18px; font-family:var(--mono); font-size:13px; color:var(--text); border:1px solid var(--line); border-radius:var(--radius); padding:3px 10px; }
 .status .dot { color:var(--accent); }
+/* Overview of all sites: one line each, jumps to the card */
+.worklist { list-style:none; margin:56px 0 0; padding:0; border-top:1px solid var(--line); }
+.worklist a { display:grid; grid-template-columns:48px minmax(0, 1.3fr) minmax(0, 1.5fr) 110px; gap:8px 24px; align-items:baseline; padding:18px 0; border-bottom:1px solid var(--line); text-decoration:none; }
+.worklist .n { font-family:var(--mono); color:var(--accent); font-size:14px; }
+.worklist .name { font-size:clamp(20px, 2vw, 28px); font-weight:700; letter-spacing:-.02em; }
+.worklist .what { color:var(--soft); }
+.worklist .state { font-family:var(--mono); font-size:13px; color:var(--soft); text-align:right; }
+.worklist .dot { color:var(--ok); margin-right:8px; }
+.worklist .dot.soon { color:var(--accent); }
+.worklist a:hover .name, .worklist a:focus-visible .name { color:var(--accent); }
+.case[id] { scroll-margin-top:90px; }
+.pair { margin-top:clamp(40px, 5vw, 72px); }
 
 /* People */
 #team { padding-top:0; }
@@ -209,6 +221,9 @@ section[id] { scroll-margin-top:76px; }
   .row-svc { grid-template-columns:48px minmax(0, 1fr); gap:10px 16px; padding:24px 0; }
   .row-svc p, .row-svc .stack { grid-column:2; text-align:left; }
   .shot .phone { right:10px; bottom:10px; width:24%; border-width:3px; }
+  .worklist a { grid-template-columns:36px minmax(0, 1fr) auto; padding:16px 0; }
+  .worklist .state { grid-row:1; grid-column:3; }
+  .worklist .what { grid-column:2 / -1; }
   .case.soon .shot { max-width:none; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -271,40 +286,46 @@ section[id] { scroll-margin-top:76px; }
 <h2 id="arbeiten-h">Built, online, in use.</h2>
 <p class="lead">Every site here comes entirely from us: Sari designs, Philipp builds, and afterwards we host and look after it.</p>
 
-<article class="case">
+<ol class="worklist" aria-label="Overview of the sites">
+<li><a href="#w-manicke"><span class="n">01</span><span class="name">Dr. med. Christoph Manicke</span><span class="what">Neurosurgery, Kiel</span><span class="state"><span class="dot" aria-hidden="true">●</span>Online</span></a></li>
+<li><a href="#w-habibi"><span class="n">02</span><span class="name">Habibi Hermanos</span><span class="what">Music, Kiel</span><span class="state"><span class="dot" aria-hidden="true">●</span>Online</span></a></li>
+<li><a href="#w-simon"><span class="n">03</span><span class="name">Simon Ernst Nirnberger</span><span class="what">Fine art</span><span class="state"><span class="dot" aria-hidden="true">●</span>Online</span></a></li>
+<li><a href="#w-zww"><span class="n">04</span><span class="name">ZWW Uni Kiel</span><span class="what">University, continuing education</span><span class="state"><span class="dot" aria-hidden="true">●</span>Online</span></a></li>
+<li><a href="#w-gruppe42"><span class="n">05</span><span class="name">Gruppe 42</span><span class="what">HR development and consulting, Vienna</span><span class="state"><span class="dot soon" aria-hidden="true">●</span>In progress</span></a></li>
+</ol>
+
+<div class="pair">
+<article class="case" id="w-manicke">
 <a class="shot" href="https://christophmanicke.de/fancy/" target="_blank" rel="noopener"><div class="frame"><img src="../assets/manicke.webp" alt="Home page of Dr. med. Christoph Manicke" width="1600" height="1000" loading="lazy"></div><img class="phone" src="../assets/manicke-mobil.webp" alt="" width="600" height="1299" loading="lazy"></a>
 <div class="meta"><span class="label">Neurosurgery, Kiel</span><h3>Dr. med. Christoph Manicke</h3>
 <p>A practice website for a second opinion on the spine: services, process, questions and the way to an appointment, by phone with a single tap.</p>
 <ul class="spec"><li><span>By us</span><span>design, build, hosting, care</span></li><li><span>Built</span><span>hand-written, static</span></li><li><span>Server</span><span>nginx</span></li><li><span>HTML</span><span>82 kB</span></li></ul>
 <a class="go" href="https://christophmanicke.de/fancy/" target="_blank" rel="noopener">christophmanicke.de/fancy ↗</a></div>
 </article>
-
-<div class="pair">
-<article class="case">
+<article class="case" id="w-habibi">
 <a class="shot" href="https://habibihermanos.de" target="_blank" rel="noopener"><div class="frame"><img src="../assets/habibi.webp" alt="Home page of Habibi Hermanos" width="1600" height="1000" loading="lazy"></div><img class="phone" src="../assets/habibi-mobil.webp" alt="" width="600" height="1299" loading="lazy"></a>
 <div class="meta"><span class="label">Music, Kiel</span><h3>Habibi Hermanos</h3>
 <p><span class="note">Text to come</span></p>
 <ul class="spec"><li><span>By us</span><span>design, build, hosting, care</span></li><li><span>Built</span><span>hand-written, static</span></li><li><span>Server</span><span>nginx</span></li><li><span>HTML</span><span>8 kB</span></li></ul>
 <a class="go" href="https://habibihermanos.de" target="_blank" rel="noopener">habibihermanos.de ↗</a></div>
 </article>
-<article class="case">
+<article class="case" id="w-simon">
 <a class="shot" href="https://simonernstnirnberger.at" target="_blank" rel="noopener"><div class="frame"><img src="../assets/simon.webp" alt="Home page of Simon Ernst Nirnberger" width="1600" height="1000" loading="lazy"></div><img class="phone" src="../assets/simon-mobil.webp" alt="" width="600" height="1299" loading="lazy"></a>
 <div class="meta"><span class="label">Fine art</span><h3>Simon Ernst Nirnberger</h3>
 <p><span class="note">Text to come</span></p>
 <ul class="spec"><li><span>By us</span><span>design, build, hosting, care</span></li><li><span>Built</span><span>hand-written, static</span></li><li><span>Server</span><span>nginx</span></li><li><span>HTML</span><span>19 kB</span></li></ul>
 <a class="go" href="https://simonernstnirnberger.at" target="_blank" rel="noopener">simonernstnirnberger.at ↗</a></div>
 </article>
-</div>
-
-<article class="case">
+<article class="case" id="w-zww">
 <a class="shot" href="https://zww-kiel.de" target="_blank" rel="noopener"><div class="frame"><img src="../assets/zww.webp" alt="Home page of ZWW Uni Kiel" width="1600" height="1000" loading="lazy"></div><img class="phone" src="../assets/zww-mobil.webp" alt="" width="600" height="1299" loading="lazy"></a>
 <div class="meta"><span class="label">University, continuing education</span><h3>ZWW Uni Kiel</h3>
 <p><span class="note">Text to come</span></p>
 <ul class="spec"><li><span>By us</span><span>design, build, hosting, care</span></li><li><span>Built</span><span>WordPress</span></li><li><span>HTML</span><span>254 kB</span></li></ul>
 <a class="go" href="https://zww-kiel.de" target="_blank" rel="noopener">zww-kiel.de ↗</a></div>
 </article>
+</div>
 
-<article class="case soon">
+<article class="case soon" id="w-gruppe42">
 <div class="shot"><div class="frame"><img src="../assets/gruppe42.webp" alt="Draft home page for Gruppe 42" width="1600" height="1000" loading="lazy"></div><img class="phone" src="../assets/gruppe42-mobil.webp" alt="" width="600" height="1299" loading="lazy"></div>
 <div class="meta"><span class="label">HR development and consulting, Vienna</span><h3>Gruppe 42</h3>
 <p>One consulting team, many audiences: services, workshops for each group, references, a seminar shop and an enquiry for the first call, all on one page.</p>
