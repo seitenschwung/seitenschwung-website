@@ -160,7 +160,7 @@ header { position:fixed; left:0; right:0; }
 .fanbox { position:absolute; left:-20vw; bottom:-17vw; width:min(72vw, 1080px); aspect-ratio:660/520; pointer-events:none; }
 .works { position:absolute; left:var(--pad); right:var(--pad); top:calc(88px + 3vh); z-index:2; }
 .works h2 { font-size:clamp(36px, 4.6vw, 68px); max-width:16em; }
-.slots { display:grid; grid-template-columns:repeat(3, 1fr); gap:clamp(20px, 3vw, 48px); margin-top:clamp(28px, 5vh, 64px); max-width:calc((100vh - 380px) * 4.3 + 96px); }
+.slots { display:grid; grid-template-columns:repeat(4, 1fr); gap:clamp(20px, 2.4vw, 40px); margin-top:clamp(28px, 5vh, 64px); max-width:calc((100vh - 380px) * 5.7 + 120px); }
 .slot { display:block; text-decoration:none; }
 /* Each card carries its phone view at the lower right, as on the close-ups; card and phone fade in together. */
 .slot .ph { position:relative; padding:0 7% 10% 0; opacity:.001; transform:scale(.92); will-change:transform, opacity; }
@@ -220,7 +220,7 @@ section, .stage { scroll-margin-top:72px; }
   .fanbox { width:min(130vw, calc((100vh - 400px + 14vw) * 1.27)); left:-36vw; bottom:-14vw; }
   .scroll-hint { display:none; }
   .slots { max-width:none; grid-template-columns:1fr; gap:14px; }
-  .slot { display:grid; grid-template-columns:min(40%, calc(((100vh - 300px) / 3 - 42px) * 1.6)) 1fr; column-gap:14px; }
+  .slot { display:grid; grid-template-columns:min(40%, calc(((100vh - 300px) / 4 - 42px) * 1.6)) 1fr; column-gap:14px; }
   .slot .ph { grid-row:span 2; padding:0; }
   .slot .phone { display:none; }
   .slot h3 { font-size:20px; margin-top:0; align-self:end; }
@@ -271,11 +271,12 @@ section, .stage { scroll-margin-top:72px; }
 </div>
 <p class="scroll-hint" id="hint">Weiter blättern ↓</p>
 <div class="works">
-<h2 class="s reveal">Drei Seiten, die schon draußen in der Welt sind.</h2>
+<h2 class="s reveal">Vier Seiten, die schon draußen in der Welt sind.</h2>
 <div class="slots">
 <a class="slot" href="https://zww-kiel.de" target="_blank" rel="noopener"><div class="ph"><div class="card"><div class="bar">zww-kiel.de</div><img src="assets/zww.webp" alt="Startseite von ZWW Uni Kiel" width="1600" height="1000"></div><img class="phone" src="assets/zww-mobil.webp" alt="" width="600" height="1298"></div><h3 class="s reveal">ZWW Uni Kiel</h3><p class="meta reveal">Hochschule, Weiterbildung</p></a>
 <a class="slot" href="https://habibihermanos.de" target="_blank" rel="noopener"><div class="ph"><div class="card"><div class="bar">habibihermanos.de</div><img src="assets/habibi.webp" alt="Startseite von Habibi Hermanos" width="1600" height="1000"></div><img class="phone" src="assets/habibi-mobil.webp" alt="" width="600" height="1298"></div><h3 class="s reveal">Habibi Hermanos</h3><p class="meta reveal">Musik, Kiel</p></a>
 <a class="slot" href="https://simonernstnirnberger.at" target="_blank" rel="noopener"><div class="ph"><div class="card"><div class="bar">simonernstnirnberger.at</div><img src="assets/simon.webp" alt="Startseite von Simon Ernst Nirnberger" width="1600" height="1000"></div><img class="phone" src="assets/simon-mobil.webp" alt="" width="600" height="1298"></div><h3 class="s reveal">Simon Ernst Nirnberger</h3><p class="meta reveal">Bildende Kunst</p></a>
+<a class="slot" href="https://christophmanicke.de" target="_blank" rel="noopener"><div class="ph"><div class="card"><div class="bar">christophmanicke.de</div><img src="assets/manicke.webp" alt="Startseite von Dr. med. Christoph Manicke" width="1600" height="1000"></div><img class="phone" src="assets/manicke-mobil.webp" alt="" width="600" height="1299"></div><h3 class="s reveal">Dr. med. Christoph Manicke</h3><p class="meta reveal">Neurochirurgie, Kiel</p></a>
 </div>
 </div>
 <div class="leaf" aria-hidden="true"><svg viewBox="585 140 470 490"><use href="#pg" style="fill:var(--paper);stroke:var(--paper)" stroke-width="30" stroke-linejoin="round"/><use href="#pg" style="fill:#BCD6EE"/><use href="#pg" style="fill:none;stroke:#BCD6EE" stroke-width="8" stroke-linejoin="round"/></svg></div>
@@ -286,13 +287,9 @@ section, .stage { scroll-margin-top:72px; }
 <section aria-labelledby="bald">
 <div class="wrap">
 <h2 class="s big" id="bald">Was gerade auf unserem Tisch liegt.</h2>
-<p class="soon-lead">Zwei Seiten, die noch nicht draußen sind. Bald.</p>
+<p class="soon-lead">Eine Seite, die noch nicht draußen ist. Bald.</p>
 <div class="cases">
-<article class="case">
-<div class="shot"><div class="frame"><div class="bar">Dr. med. Christoph Manicke<span class="status">In Arbeit</span></div><img src="assets/manicke.webp" alt="Entwurf der Startseite von Dr. med. Christoph Manicke: Zweite Meinung zur Wirbelsäule" width="1600" height="1000" loading="lazy"></div><img class="phone" src="assets/manicke-mobil.webp" alt="" width="600" height="1298" loading="lazy"></div>
-<h3 class="s">Dr. med. Christoph Manicke</h3><p class="sector">Neurochirurgie, Kiel</p><p class="d">Eine Praxisseite für die zweite Meinung zur Wirbelsäule: Leistungen, Ablauf, Fragen und der Weg zum Termin, per Telefon mit einem Tipp.</p>
-</article>
-<article class="case offset">
+<article class="case lead">
 <div class="shot"><div class="frame"><div class="bar">Gruppe 42<span class="status">In Arbeit</span></div><img src="assets/gruppe42.webp" alt="Entwurf der Startseite von Gruppe 42" width="1600" height="1000" loading="lazy"></div><img class="phone" src="assets/gruppe42-mobil.webp" alt="" width="600" height="1299" loading="lazy"></div>
 <h3 class="s">Gruppe 42</h3><p class="sector">Personalentwicklung und Beratung, Wien</p><p class="d">Ein Beratungsteam, viele Zielgruppen: Leistungen, Workshops nach Publikum, Referenzen, ein Seminarshop und eine Anfrage fürs erste Gespräch, alles auf einer Seite.</p>
 </article>
