@@ -95,10 +95,10 @@ nav { display:flex; align-items:center; gap:clamp(14px, 2vw, 28px); }
 .contact .mail { max-width:100%; overflow-wrap:anywhere; }
 
 /* Footer */
-footer { border-top:1px solid var(--line); padding:26px 0; font-family:var(--mono); font-size:13px; color:var(--soft); }
+footer { border-top:1px solid var(--line); padding:18px 0; font-family:var(--mono); font-size:13px; color:var(--soft); }
 footer .wrap { display:flex; justify-content:space-between; align-items:center; gap:12px 24px; flex-wrap:wrap; }
 footer ul { display:flex; gap:8px 24px; list-style:none; margin:0; padding:0; flex-wrap:wrap; }
-footer a { text-decoration:none; }
+footer a { text-decoration:none; padding:8px 0; }
 footer a:hover { color:var(--text); text-decoration:underline; }
 
 /* Seven entries plus the button need about 1180 px; below that the menu folds. */
@@ -138,6 +138,7 @@ section[id] { scroll-margin-top:76px; }
 .hero h1 { font-size:clamp(48px, 7.4vw, 118px); }
 .hero .lead { max-width:30em; margin:28px 0 34px; }
 .hero .row { display:flex; gap:12px; flex-wrap:wrap; }
+.hero .term { align-self:start; }
 .term { min-width:0; margin:0; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; font-family:var(--mono); font-size:14px; line-height:1.75; }
 .term .top { display:flex; justify-content:space-between; gap:12px; padding:10px 14px; border-bottom:1px solid var(--line); color:var(--soft); font-size:12px; }
 .term ol { list-style:none; margin:0; padding:18px 18px 22px; color:var(--soft); }
@@ -180,7 +181,7 @@ section[id] { scroll-margin-top:76px; }
 .spec li span:first-child { flex:none; color:var(--soft); }
 .spec li span:last-child { text-align:right; overflow-wrap:anywhere; }
 .case .by-us { font-family:var(--mono); font-size:13px; color:var(--soft); margin:18px 0 0; }
-.go { margin-top:18px; align-self:flex-start; color:var(--accent); font-weight:700; text-decoration:none; }
+.go { margin-top:10px; padding:8px 0; align-self:flex-start; color:var(--accent); font-weight:700; text-decoration:none; }
 .go:hover { text-decoration:underline; }
 .note { font-family:var(--mono); font-size:12px; color:var(--bg); background:var(--code); padding:1px 6px; border-radius:var(--radius); }
 .shot img.fx { opacity:1; transition:opacity .4s ease; }
